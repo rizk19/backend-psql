@@ -11,7 +11,7 @@ function hasRole(...role) {
     }
     try {
       const removeBearer = token.slice(7, token.length);
-      const decoded = jwt.verify(removeBearer, process.env.DATABASE_URL);
+      const decoded = jwt.verify(removeBearer, process.env.JWT_SECRET);
       if (!role.includes(decoded.user.role)) {
         return res.status(403).json({
           status: 'error',
